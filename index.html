@@ -10,8 +10,7 @@
   <body>
 
 
-    <nav class="navbar navbar-expand-lg"
-         :class="{'navbar-light bg-light': !darkNav, 'navbar-dark bg-dark': darkNav}"
+    <nav class="navbar navbar-expand-lg" :class="navbarClasses"
     >
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -52,6 +51,18 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
     Vue.createApp({
+
+        computed: {
+            navbarClasses() {
+                return {
+                'navbar-light': !this.darkNav,
+                'bg-light': !this.darkNav,
+                'navbar-dark': this.darkNav,
+                'bg-dark': this.darkNav,
+                };
+            },
+        },
+
         data(){
             return{
                 activePage: 0,
