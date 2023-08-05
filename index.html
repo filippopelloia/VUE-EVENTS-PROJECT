@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vue demo</title>
+    <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   </head>
   <body>
 
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Vue App</a>
+          <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -18,15 +19,15 @@
             <ul class="navbar-nav">
 
               <li v-for="(page, index) in pages" 
-                  class="nav-item"
+                  class="nav-item" 
                   :key="index"
               >
-                    <a  class="nav-link" 
-                        aria-current="page" 
-                        :href="page.link.url"
-                        :title="page.link.text"
-                        @click.prevent="activePage = index"
-                    >{{ page.pageName }}</a>
+                <a class="nav-link" 
+                   aria-current="page" 
+                   :href="page.info.url"
+                   :title="page.info.text"
+                   @click.prevent="activePage = index"
+                >{{ page.info.text }}</a>
               </li>
 
             </ul>
@@ -35,9 +36,8 @@
       </nav>
 
     <h1>{{ pages[activePage].content }}</h1>
-
   </body>
-  
+
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
     Vue.createApp({
@@ -46,20 +46,21 @@
                 activePage: 0,
                 pages: [
                     {
-                        link: {text: 'Omni-man', url: 'home.html'},
-                        pageName: 'Home page',
-                        content: 'This is the home page!!'
+                        content: 'Omni-man will die... I think.',
+                        info: {url: 'home.html', text: 'Home'},
+                        pageName: 'Home Page'
                     },
                     {
-                        link: {text: 'Invincible', url: 'location.html'},
-                        pageName: 'Location page',
-                        content: 'This is the location page!!'
+                        content: 'Invincible will win.',
+                        info: {url: 'location.html', text: 'Location'},
+                        pageName: 'Location Page'
                     },
                     {
-                        link: {text: 'Atom Eve', url: 'contacts.html'},
-                        pageName: 'Contacts page',
-                        content: 'This is the contacts page!!'
+                        content: 'Atom Eve will fall in love with Invincible... IMO.',
+                        info: {url: 'contacts.html', text: 'Contacts'},
+                        pageName: 'Contacts Page'
                     },
+
                 ]
             }
         }
@@ -67,4 +68,5 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </html>
