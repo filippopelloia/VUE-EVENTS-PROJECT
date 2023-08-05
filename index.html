@@ -16,21 +16,25 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+
+              <li v-for="(page, index) in pages" 
+                  class="nav-item"
+                  :key="index"
+              >
+                    <a  class="nav-link" 
+                        aria-current="page" 
+                        :href="page.link.url"
+                        :title="page.link.text"
+                        @click.prevent="activePage = index"
+                    >{{ page.pageName }}</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
+
             </ul>
           </div>
         </div>
       </nav>
 
-    <h1>{{ hey }}</h1>
+    <h1>{{ pages[activePage].content }}</h1>
 
   </body>
   
@@ -39,7 +43,24 @@
     Vue.createApp({
         data(){
             return{
-                hey: 'ciaooooooo'
+                activePage: 0,
+                pages: [
+                    {
+                        link: {text: 'Omni-man', url: 'home.html'},
+                        pageName: 'Home page',
+                        content: 'This is the home page!!'
+                    },
+                    {
+                        link: {text: 'Invincible', url: 'location.html'},
+                        pageName: 'Location page',
+                        content: 'This is the location page!!'
+                    },
+                    {
+                        link: {text: 'Atom Eve', url: 'contacts.html'},
+                        pageName: 'Contacts page',
+                        content: 'This is the contacts page!!'
+                    },
+                ]
             }
         }
     }).mount('body');
